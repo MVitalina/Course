@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.NewFormController">
+   <children>
+      <Label layoutX="174.0" layoutY="14.0" text="Новий формуляр" textAlignment="CENTER">
+         <font>
+            <Font name="Cambria Italic" size="36.0" />
+         </font>
+      </Label>
+      <Separator layoutX="8.0" layoutY="68.0" prefHeight="9.0" prefWidth="584.0" />
+      <Label layoutX="50.0" layoutY="100.0" text="Nickname:">
+         <font>
+            <Font name="Cambria Italic" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="50.0" layoutY="150.0" text="ПІБ: ">
+         <font>
+            <Font name="Cambria Italic" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="50.0" layoutY="200.0" text="Рік народження:">
+         <font>
+            <Font name="Cambria Italic" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="50.0" layoutY="250.0" text="Адреса:">
+         <font>
+            <Font name="Cambria Italic" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="50.0" layoutY="300.0" text="Телефон:">
+         <font>
+            <Font name="Cambria Italic" size="20.0" />
+         </font>
+      </Label>
+      <TextField fx:id="nick" layoutX="256.0" layoutY="100.0" prefHeight="25.0" prefWidth="295.0" />
+      <TextField fx:id="name" layoutX="256.0" layoutY="150.0" prefHeight="25.0" prefWidth="295.0" />
+      <TextField fx:id="born" layoutX="256.0" layoutY="200.0" prefHeight="25.0" prefWidth="295.0" />
+      <TextField fx:id="address" layoutX="256.0" layoutY="250.0" prefHeight="25.0" prefWidth="295.0" />
+      <TextField layoutX="256.0" layoutY="300.0" prefHeight="25.0" prefWidth="295.0" />
+      <Button layoutX="256.0" layoutY="342.0" mnemonicParsing="false" prefHeight="9.0" prefWidth="295.0" text="Створити" textAlignment="CENTER">
+         <font>
+            <Font name="Cambria Italic" size="20.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
