@@ -54,4 +54,19 @@ public class DBModel {
             System.out.println(e.getMessage());
         }
     }
+
+    public boolean isUnique(String nickname) throws SQLException {
+        String query = "SELECT CASE WHEN EXISTS(SELECT nickname FROM Forms WHERE nickname = ?) THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT) END";
+        PreparedStatement ps = connection.prepareStatement(query);
+        ps.setString(1, nickname);
+        try {
+            ResultSet rs = ps.executeQuery();
+            return !(rs.getBoolean(1));
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        } finally {
+            ps.close();
+        }
+        return false;
+    }
 }

@@ -23,7 +23,6 @@ public class IndexController implements Initializable {
     private TextField nickname;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        // TODO Auto-generated method stub (???)
         if (model.isDbConnected()) {
             isConnected.setText("Connected to DB");
         } else {

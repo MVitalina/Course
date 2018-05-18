@@ -44,8 +44,8 @@
       <TextField fx:id="name" layoutX="256.0" layoutY="150.0" prefHeight="25.0" prefWidth="295.0" />
       <TextField fx:id="born" layoutX="256.0" layoutY="200.0" prefHeight="25.0" prefWidth="295.0" />
       <TextField fx:id="address" layoutX="256.0" layoutY="250.0" prefHeight="25.0" prefWidth="295.0" />
-      <TextField layoutX="256.0" layoutY="300.0" prefHeight="25.0" prefWidth="295.0" />
-      <Button layoutX="256.0" layoutY="342.0" mnemonicParsing="false" prefHeight="9.0" prefWidth="295.0" text="Створити" textAlignment="CENTER">
+      <TextField fx:id="phone" layoutX="256.0" layoutY="300.0" prefHeight="25.0" prefWidth="295.0" />
+      <Button layoutX="256.0" layoutY="342.0" mnemonicParsing="false" onAction="#addForm" prefHeight="9.0" prefWidth="295.0" text="Створити" textAlignment="CENTER">
          <font>
             <Font name="Cambria Italic" size="20.0" />
          </font>
