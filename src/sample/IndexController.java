@@ -4,6 +4,7 @@ import javafx.event.*;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
@@ -24,10 +25,14 @@ public class IndexController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         if (model.isDbConnected()) {
+            //todo refact
             isConnected.setText("Connected to DB");
         } else {
-
-            isConnected.setText("Not connected to DB");
+            //isConnected.setText("Not connected to DB");
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Warning!!!");
+            alert.setHeaderText("Nick isn`t correct");
+            alert.showAndWait();
         }
     }
     public void NewForm (ActionEvent e) {
@@ -49,8 +54,15 @@ public class IndexController implements Initializable {
     public void Login (ActionEvent e) {
         try {
             if (model.isLogin(nickname.getText())) {
-                isConnected.setText("Nick is correct");
-            } else { isConnected.setText("Nick isn`t correct"); }
+                //isConnected.setText("Nick is correct");
+
+            } else {
+                //isConnected.setText("Nick isn`t correct");
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Warning!!!");
+                alert.setHeaderText("Nick isn`t correct");
+                alert.showAndWait();
+            }
         } catch (SQLException e1) {
             e1.printStackTrace();
         }

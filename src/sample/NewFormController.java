@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 
 import java.io.IOException;
@@ -22,10 +23,6 @@ public class NewFormController implements Initializable {
         }*/
     }
 
-    public void isUnique (ActionEvent e) {
-        //TODO isUnique
-    }
-
     public void addForm (ActionEvent e) {
         try {
             if (model.isUnique(nick.getText())) {
@@ -34,7 +31,10 @@ public class NewFormController implements Initializable {
                 model.newForm(nick.getText(), name.getText(), bornint, address.getText(), phone.getText());
                 ((Node)e.getSource()).getScene().getWindow().hide();
             } else {
-                System.out.println("not unique");
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Warning!!!");
+                alert.setHeaderText("Nick isn`t unique");
+                alert.showAndWait();
             }
         } catch (SQLException e1) {
             e1.printStackTrace();
