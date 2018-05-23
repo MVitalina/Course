@@ -20,6 +20,23 @@ public class DBModel {
         }
     }
 
+    public Form getByNick(String nickname) throws SQLException {
+        String query = "SELECT * FROM Forms WHERE nickname = ?";
+        PreparedStatement ps = connection.prepareStatement(query);
+        ps.setString(1, nickname);
+        ResultSet rs = ps.executeQuery();
+        while ( rs.next() ) {
+            String name = rs.getString("name");
+            int born = rs.getInt("born");
+            String address = rs.getString("address");
+            String phone = rs.getString("phone");
+            rs.close();
+            ps.close();
+            return new Form(name, born, nickname, phone, address);
+        }
+        return null;
+    }
+
     public boolean isLogin(String nickname) throws SQLException {
         PreparedStatement ps = null;
         String query = "SELECT * FROM Forms WHERE nickname = ?";

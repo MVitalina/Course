@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.FormController">
+   <children>
+      <Label layoutX="178.0" layoutY="6.0" text="Формуляр читача">
+         <font>
+            <Font name="Cambria Italic" size="30.0" />
+         </font>
+      </Label>
+      <TabPane layoutY="49.0" prefHeight="351.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Інформація про користувача">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="245.0" prefWidth="447.0">
+                     <children>
+                        <Label layoutX="138.0" layoutY="49.0" text="Ім'я: ">
+                           <font>
+                              <Font name="Cambria Italic" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="138.0" layoutY="99.0" text="Нік:">
+                           <font>
+                              <Font name="Cambria Italic" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="138.0" layoutY="149.0" text="Рік народження:">
+                           <font>
+                              <Font name="Cambria Italic" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="138.0" layoutY="199.0" text="Телефон:">
+                           <font>
+                              <Font name="Cambria Italic" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="138.0" layoutY="249.0" text="Адреса:">
+                           <font>
+                              <Font name="Cambria Italic" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="nameL" layoutX="338.0" layoutY="49.0" text="noname">
+                           <font>
+                              <Font name="Cambria Italic" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="nickL" layoutX="338.0" layoutY="99.0" text="nick">
+                           <font>
+                              <Font name="Cambria Italic" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="bornL" layoutX="338.0" layoutY="149.0" text="0000">
+                           <font>
+                              <Font name="Cambria Italic" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="phoneL" layoutX="338.0" layoutY="199.0" text="+380**-*******">
+                           <font>
+                              <Font name="Cambria Italic" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="addressL" layoutX="338.0" layoutY="249.0" text="address">
+                           <font>
+                              <Font name="Cambria Italic" size="20.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Книги">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>
