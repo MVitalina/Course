@@ -34,4 +34,12 @@ public class FormController {
             e1.printStackTrace();
         }
     }
+
+    public void setForm(Form form) {
+        nameL.setText(form.name);
+        nickL.setText(form.nick);
+        bornL.setText(Integer.toString(form.born));
+        addressL.setText(form.address);
+        phoneL.setText(form.nick);
+    }
 }

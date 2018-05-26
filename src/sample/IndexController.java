@@ -3,6 +3,7 @@ package sample;
 import javafx.event.*;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
@@ -54,12 +55,14 @@ public class IndexController implements Initializable {
     public void Login (ActionEvent e) {
         try {
             if (model.isLogin(nickname.getText())) {
+                ((Node)e.getSource()).getScene().getWindow().hide();
                 Stage primaryStage = new Stage();
                 FXMLLoader loader = new FXMLLoader();
-                FormController formController = (FormController)loader.getController();
-//                formController.setNick(nickname.getText());
                 Pane root = loader.load(getClass().getResource("Form.fxml").openStream());
- //               if (nickname.getText() != null)
+                FormController formController = (FormController)loader.getController();
+                Form f = model.getByNick(nickname.getText());
+                formController.setForm(f);
+                if (nickname.getText() != null)
                 primaryStage.setTitle("Формуляр читача");
                 assert root != null;
                 primaryStage.setScene(new Scene(root));
