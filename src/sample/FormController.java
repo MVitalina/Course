@@ -29,7 +29,7 @@ public class FormController {
             nickL.setText(form.nick);
             bornL.setText(Integer.toString(form.born));
             addressL.setText(form.address);
-            phoneL.setText(form.nick);
+            phoneL.setText(form.phone);
         } catch (SQLException e1) {
             e1.printStackTrace();
         }
@@ -40,6 +40,6 @@ public class FormController {
         nickL.setText(form.nick);
         bornL.setText(Integer.toString(form.born));
         addressL.setText(form.address);
-        phoneL.setText(form.nick);
+        phoneL.setText(form.phone);
     }
 }
