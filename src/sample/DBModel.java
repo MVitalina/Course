@@ -1,5 +1,6 @@
 package sample;
 import java.sql.*;
+import java.util.LinkedList;
 
 public class DBModel {
     Connection connection;
@@ -35,6 +36,28 @@ public class DBModel {
             return new Form(name, born, nickname, phone, address);
         }
         return null;
+    }
+
+    public LinkedList<Book> getBookList() throws SQLException {
+        LinkedList <Book> bookList = new LinkedList<Book> ();
+        String query = "SELECT * FROM Books";
+        PreparedStatement ps = connection.prepareStatement(query);
+        ResultSet rs = ps.executeQuery();
+        while ( rs.next() ) {
+            String author = rs.getString("author");
+            String title = rs.getString("title");
+            String isbn = rs.getString("isbn");
+            String country = rs.getString("country");
+            String language = rs.getString("language");
+            int pages = rs.getInt("pages");
+            String publishing = rs.getString("publishing");
+            String availability = rs.getString("availability");
+            int id = rs.getInt("id");
+            bookList.add(new Book(author, title, isbn, country, language, pages, publishing, availability, id));
+        }
+        rs.close();
+        ps.close();
+        return bookList;
     }
 
     public boolean isLogin(String nickname) throws SQLException {
