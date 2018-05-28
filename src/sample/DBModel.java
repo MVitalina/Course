@@ -60,6 +60,31 @@ public class DBModel {
         return bookList;
     }
 
+    public int howManyBooks(String nickname) throws SQLException {
+        PreparedStatement ps = null;
+        String query = "SELECT * FROM Books WHERE availability = ?";
+        ps = connection.prepareStatement(query);
+        ps.setString(1, nickname);
+        ResultSet rs = ps.executeQuery();
+        int count = 0;
+        while ( rs.next() ) {
+            count++;
+        }
+        rs.close();
+        ps.close();
+        return count;
+    }
+
+    public void newBookToForm(String nickname, int bookId) throws SQLException {
+        PreparedStatement ps = null;
+        String query = "UPDATE Books SET availability = ? WHERE id = ?";
+        ps = connection.prepareStatement(query);
+        ps.setString(1, nickname);
+        ps.setInt(2, bookId );
+        ps.execute();
+        ps.close();
+    }
+
     public boolean isLogin(String nickname) throws SQLException {
         PreparedStatement ps = null;
         String query = "SELECT * FROM Forms WHERE nickname = ?";

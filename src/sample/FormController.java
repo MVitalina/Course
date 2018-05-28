@@ -29,16 +29,16 @@ public class FormController implements Initializable {
     }
 
     public void initialize(URL location, ResourceBundle resources) {
-        try{
+        /*try{
             Form form = model.getByNick(nickname);
-            /*nameL.setText(form.name);
+            *//*nameL.setText(form.name);
             nickL.setText(form.nick);
             bornL.setText(Integer.toString(form.born));
             addressL.setText(form.address);
-            phoneL.setText(form.phone);*/
+            phoneL.setText(form.phone);*//*
         } catch (SQLException e1) {
             e1.printStackTrace();
-        }
+        }*/
     }
 
     public void setForm(Form form) {
@@ -50,7 +50,6 @@ public class FormController implements Initializable {
     }
 
     public void GoToLibrary (ActionEvent e) throws SQLException {
-        //if () { todo less than 5 books
         Stage primaryStage = new Stage();
         FXMLLoader loader = new FXMLLoader();
         Pane root = null;
@@ -60,6 +59,8 @@ public class FormController implements Initializable {
             e1.printStackTrace();
         }
         LibraryController libController = (LibraryController)loader.getController();
+        System.out.println(this.nickname);
+        libController.setNick(this.nickname);
         primaryStage.setTitle("Бібліотека");
         assert root != null;
         primaryStage.setScene(new Scene(root));
