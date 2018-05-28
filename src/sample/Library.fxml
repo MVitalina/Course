@@ -25,14 +25,14 @@
          </font>
       </TextField>
       <ChoiceBox layoutX="233.0" layoutY="49.0" prefHeight="30.0" prefWidth="151.0" />
-      <Button layoutX="48.0" layoutY="371.0" mnemonicParsing="false" text="Додати книгу в бібліотеку">
+      <Button layoutX="48.0" layoutY="371.0" mnemonicParsing="false" onAction="#BackToForm" text="Повернутись до формуляру">
          <font>
             <Font name="Cambria Italic" size="20.0" />
          </font>
       </Button>
       <Pane fx:id="pane" layoutX="7.0" layoutY="106.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="244.0" prefWidth="349.0" visible="false">
          <children>
-            <Button layoutX="81.0" layoutY="185.0" mnemonicParsing="false" onAction="#AddBookToForm" text="Додати книгу">
+            <Button fx:id="addB" layoutX="81.0" layoutY="185.0" mnemonicParsing="false" onAction="#AddBookToForm" text="Додати книгу">
                <font>
                   <Font name="Cambria Italic" size="20.0" />
                </font>

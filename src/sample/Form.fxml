@@ -80,7 +80,7 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <ListView layoutX="341.0" layoutY="14.0" prefHeight="294.0" prefWidth="245.0" />
+                        <ListView fx:id="listView" layoutX="341.0" layoutY="14.0" prefHeight="294.0" prefWidth="245.0" />
                         <Label layoutX="102.0" layoutY="14.0" text="Ваші книги:">
                            <font>
                               <Font name="Cambria Italic" size="25.0" />
@@ -113,17 +113,17 @@
                                     <Font name="Cambria Italic" size="20.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="titleL" layoutX="184.0" layoutY="10.0">
+                              <Label fx:id="titleL" layoutX="90.0" layoutY="10.0">
                                  <font>
                                     <Font name="Cambria Italic" size="20.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="authorL" layoutX="184.0" layoutY="50.0">
+                              <Label fx:id="authorL" layoutX="90.0" layoutY="50.0">
                                  <font>
                                     <Font name="Cambria Italic" size="20.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="isbnL" layoutX="184.0" layoutY="90.0">
+                              <Label fx:id="isbnL" layoutX="90.0" layoutY="90.0">
                                  <font>
                                     <Font name="Cambria Italic" size="20.0" />
                                  </font>

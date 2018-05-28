@@ -62,6 +62,7 @@ public class IndexController implements Initializable {
                 FormController formController = (FormController)loader.getController();
                 Form f = model.getByNick(nickname.getText());
                 formController.setForm(f);
+                formController.setBooks(nickname.getText());
                 formController.setNick(nickname.getText());
                 if (nickname.getText() != null)
                 primaryStage.setTitle("Формуляр читача");

@@ -60,6 +60,29 @@ public class DBModel {
         return bookList;
     }
 
+    public LinkedList<Book> getFormBookList(String nickname) throws SQLException {
+        LinkedList <Book> formBookList = new LinkedList<Book> ();
+        String query = "SELECT * FROM Books WHERE availability = ?";
+        PreparedStatement ps = connection.prepareStatement(query);
+        ps.setString(1, nickname);
+        ResultSet rs = ps.executeQuery();
+        while ( rs.next() ) {
+            String author = rs.getString("author");
+            String title = rs.getString("title");
+            String isbn = rs.getString("isbn");
+            String country = rs.getString("country");
+            String language = rs.getString("language");
+            int pages = rs.getInt("pages");
+            String publishing = rs.getString("publishing");
+            String availability = rs.getString("availability");
+            int id = rs.getInt("id");
+            formBookList.add(new Book(author, title, isbn, country, language, pages, publishing, availability, id));
+        }
+        rs.close();
+        ps.close();
+        return formBookList;
+    }
+
     public int howManyBooks(String nickname) throws SQLException {
         PreparedStatement ps = null;
         String query = "SELECT * FROM Books WHERE availability = ?";
