@@ -60,7 +60,6 @@ public class FormController implements Initializable {
     public void setBooks(String nickname) {
         try {
             itemList = FXCollections.observableArrayList();
-            System.out.println(nickname);
             for (Book b: model.getFormBookList(nickname) ) {
                 itemList.add("\"" + b.title + "\" " + b.author);
             }
@@ -72,7 +71,11 @@ public class FormController implements Initializable {
         listView.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                setBookId(indexOfBook());
+                try {
+                    setBookId(indexOfBook(listView.getSelectionModel().getSelectedItem()));
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
                 if (bookId != -1) {
                     pane.setVisible(true);
                     try {
@@ -87,6 +90,16 @@ public class FormController implements Initializable {
                 } else pane.setVisible(false);
             }
         });
+    }
+
+    public void ReturnBook(ActionEvent e) {
+        //todo add confirmation
+        try {
+            model.returnBook(nickname, bookId+1);
+            setBooks(nickname);
+        } catch (SQLException e1) {
+            e1.printStackTrace();
+        }
     }
 
     public void GoToLibrary (ActionEvent e) throws SQLException {
@@ -107,11 +120,15 @@ public class FormController implements Initializable {
         primaryStage.show();
     }
 
-    private int indexOfBook() {
-        for (String s: itemList ) {
-            if (s.equals(listView.getSelectionModel().getSelectedItem())){
-                return itemList.indexOf(s);
+    private int indexOfBook(String s) throws SQLException {
+        LibraryController libContr = new LibraryController();
+        for (String str: libContr.itemList ) {
+            if (s != null) {
+                if (s.equals(str)){
+                    return libContr.itemList.indexOf(str);
+                }
             }
+
         }
         return -1;
     }

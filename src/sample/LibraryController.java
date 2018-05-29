@@ -35,7 +35,14 @@ public class LibraryController implements Initializable {
 
     private DBModel model = new DBModel();
 
-    private ObservableList<String> itemList;
+    public ObservableList<String> itemList;
+
+    public LibraryController() throws SQLException {
+        itemList = FXCollections.observableArrayList();
+        for (Book b: model.getBookList() ) {
+            itemList.add("\"" + b.title + "\" " + b.author);
+        }
+    }
 
     private int bookId;
 
@@ -51,15 +58,8 @@ public class LibraryController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        try {
-            itemList = FXCollections.observableArrayList();
-            for (Book b: model.getBookList() ) {
-                itemList.add("\"" + b.title + "\" " + b.author);
-            }
-            listView.setItems(itemList);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+
+        listView.setItems(itemList);
 
         listView.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
@@ -106,6 +106,7 @@ public class LibraryController implements Initializable {
         Pane root = loader.load(getClass().getResource("Form.fxml").openStream());
         FormController formController = (FormController)loader.getController();
         Form f = model.getByNick(nickname);
+        formController.setNick(nickname);
         formController.setForm(f);
         formController.setBooks(nickname);
         if (nickname != null)

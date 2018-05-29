@@ -108,6 +108,15 @@ public class DBModel {
         ps.close();
     }
 
+    public void returnBook(String nickname, int bookId) throws SQLException {
+        PreparedStatement ps = null;
+        String query = "UPDATE Books SET availability = 'not in use' WHERE id = ?";
+        ps = connection.prepareStatement(query);
+        ps.setInt(1, bookId );
+        ps.execute();
+        ps.close();
+    }
+
     public boolean isLogin(String nickname) throws SQLException {
         PreparedStatement ps = null;
         String query = "SELECT * FROM Forms WHERE nickname = ?";
