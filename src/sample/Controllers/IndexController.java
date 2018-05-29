@@ -13,8 +13,10 @@ import javafx.stage.*;
 import javafx.fxml.Initializable;
 import sample.DBModel;
 import sample.Form;
+import sample.Patterns.ProxyLib;
 
 import java.io.IOException;
+import java.net.Proxy;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
@@ -56,31 +58,11 @@ public class IndexController implements Initializable {
 
     public void Login (ActionEvent e) {
         try {
-            if (model.isLogin(nickname.getText())) {
-                ((Node)e.getSource()).getScene().getWindow().hide();
-                Stage primaryStage = new Stage();
-                FXMLLoader loader = new FXMLLoader();
-                Pane root = loader.load(getClass().getResource("../View/Form.fxml").openStream());
-                FormController formController = (FormController)loader.getController();
-                Form f = model.getByNick(nickname.getText());
-                formController.setForm(f);
-                formController.setBooks(nickname.getText());
-                formController.setNick(nickname.getText());
-                if (nickname.getText() != null)
-                primaryStage.setTitle("Формуляр читача");
-                assert root != null;
-                primaryStage.setScene(new Scene(root));
-                primaryStage.show();
-            } else {
-                //isConnected.setText("Nick isn`t correct");
-                Alert alert = new Alert(Alert.AlertType.WARNING);
-                alert.setTitle("Warning!!!");
-                alert.setHeaderText("Nick isn`t correct");
-                alert.showAndWait();
-            }
-        } catch (SQLException e1) {
-            e1.printStackTrace();
-        } catch (IOException e1) {
+            // PATTERN PROXY
+            ProxyLib proxy = new ProxyLib();
+            Form f = model.getByNick(nickname.getText());
+            proxy.GoToForm(model.isLogin(nickname.getText()), e, f);
+        } catch (SQLException | IOException e1) {
             e1.printStackTrace();
         }
     }
