@@ -18,6 +18,7 @@ import javafx.stage.Stage;
 import sample.Book;
 import sample.DBModel;
 import sample.Form;
+import sample.Patterns.BookState;
 
 import java.io.IOException;
 import java.net.URL;
@@ -30,9 +31,9 @@ public class LibraryController implements Initializable {
     @FXML
     private Pane pane;
     @FXML
-    private Label titleL, authorL, isbnL, avL;
+    public Label titleL, authorL, isbnL, avL;
     @FXML
-    private Button addB;
+    public Button addB;
 
     private DBModel model = new DBModel();
 
@@ -73,13 +74,10 @@ public class LibraryController implements Initializable {
                         titleL.setText(book.title);
                         authorL.setText(book.author);
                         isbnL.setText(book.ISBN);
-                        if (book.availability.equals("not in use")) {
-                            avL.setText("Наявна");
-                            addB.setDisable(false);
-                        } else {
-                            avL.setText("Наразі книга на руках");
-                            addB.setDisable(true);
-                        }
+
+                        //State pattern
+                        BookState bookState = new BookState(book.availability);
+                        bookState.setAvailability(avL, addB);
 
                     } catch (SQLException e) {
                         e.printStackTrace();
