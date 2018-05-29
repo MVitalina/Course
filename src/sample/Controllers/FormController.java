@@ -1,4 +1,4 @@
-package sample;
+package sample.Controllers;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -9,18 +9,18 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import sample.Book;
+import sample.DBModel;
+import sample.Form;
 
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
-import java.util.LinkedList;
 import java.util.ResourceBundle;
 
 public class FormController implements Initializable {
@@ -108,7 +108,7 @@ public class FormController implements Initializable {
         FXMLLoader loader = new FXMLLoader();
         Pane root = null;
         try {
-            root = loader.load(getClass().getResource("Library.fxml").openStream());
+            root = loader.load(getClass().getResource("../View/Library.fxml").openStream());
         } catch (IOException e1) {
             e1.printStackTrace();
         }

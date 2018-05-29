@@ -1,4 +1,4 @@
-package sample;
+package sample.Controllers;
 
 import javafx.event.*;
 import javafx.fxml.FXML;
@@ -11,6 +11,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.*;
 import javafx.fxml.Initializable;
+import sample.DBModel;
+import sample.Form;
 
 import java.io.IOException;
 import java.net.URL;
@@ -41,7 +43,7 @@ public class IndexController implements Initializable {
         FXMLLoader loader = new FXMLLoader();
         Pane root = null;
         try {
-            root = loader.load(getClass().getResource("NewForm.fxml").openStream());
+            root = loader.load(getClass().getResource("../View/NewForm.fxml").openStream());
         } catch (IOException e1) {
             e1.printStackTrace();
         }
@@ -58,7 +60,7 @@ public class IndexController implements Initializable {
                 ((Node)e.getSource()).getScene().getWindow().hide();
                 Stage primaryStage = new Stage();
                 FXMLLoader loader = new FXMLLoader();
-                Pane root = loader.load(getClass().getResource("Form.fxml").openStream());
+                Pane root = loader.load(getClass().getResource("../View/Form.fxml").openStream());
                 FormController formController = (FormController)loader.getController();
                 Form f = model.getByNick(nickname.getText());
                 formController.setForm(f);

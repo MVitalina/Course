@@ -1,4 +1,4 @@
-package sample;
+package sample.Controllers;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -9,18 +9,19 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import sample.Book;
+import sample.DBModel;
+import sample.Form;
 
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
-import java.util.LinkedList;
 import java.util.ResourceBundle;
 
 public class LibraryController implements Initializable {
@@ -103,7 +104,7 @@ public class LibraryController implements Initializable {
         ((Node)e.getSource()).getScene().getWindow().hide();
         Stage primaryStage = new Stage();
         FXMLLoader loader = new FXMLLoader();
-        Pane root = loader.load(getClass().getResource("Form.fxml").openStream());
+        Pane root = loader.load(getClass().getResource("../View/Form.fxml").openStream());
         FormController formController = (FormController)loader.getController();
         Form f = model.getByNick(nickname);
         formController.setNick(nickname);
