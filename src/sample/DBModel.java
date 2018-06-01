@@ -1,4 +1,6 @@
 package sample;
+import sample.Patterns.BookPrototype;
+
 import java.sql.*;
 import java.util.LinkedList;
 
@@ -53,7 +55,12 @@ public class DBModel {
             String publishing = rs.getString("publishing");
             String availability = rs.getString("availability");
             int id = rs.getInt("id");
-            bookList.add(new Book(author, title, isbn, country, language, pages, publishing, availability, id));
+
+            // PATTERN PROTOTYPE
+
+            Book book = BookPrototype.getBook();
+            book.setBook(author, title, isbn, country, language, pages, publishing, availability, id);
+            bookList.add(book);
         }
         rs.close();
         ps.close();

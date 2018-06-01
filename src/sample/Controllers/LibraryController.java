@@ -9,16 +9,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import sample.Book;
 import sample.DBModel;
 import sample.Form;
-import sample.Patterns.BookState;
+import sample.Patterns.*;
 
 import java.io.IOException;
 import java.net.URL;
@@ -34,6 +32,8 @@ public class LibraryController implements Initializable {
     public Label titleL, authorL, isbnL, avL;
     @FXML
     public Button addB;
+    @FXML
+    private ChoiceBox<String> chBoxGetBook;
 
     private DBModel model = new DBModel();
 
@@ -74,8 +74,12 @@ public class LibraryController implements Initializable {
                         titleL.setText(book.title);
                         authorL.setText(book.author);
                         isbnL.setText(book.ISBN);
+                        chBoxGetBook.setItems(FXCollections.observableArrayList(
+                                "Занести в формуляр", "Читати в залі")
+                        );
 
-                        //State pattern
+                        // PATTERN STATE
+
                         BookState bookState = new BookState(book.availability);
                         bookState.setAvailability(avL, addB);
 
@@ -88,14 +92,26 @@ public class LibraryController implements Initializable {
     }
 
     public void AddBookToForm(ActionEvent e) {
-        //todo add confirmation
-        try {
-            if (model.howManyBooks(nickname) < 5) {
-                model.newBookToForm(nickname, bookId+1);
+        String getBook = chBoxGetBook.getSelectionModel().getSelectedItem();
+
+        // PATTERN BRIDGE
+
+        if (getBook.equals("Занести в формуляр")) {
+            try {
+                if (model.howManyBooks(nickname) < 5) {
+                    AbstReader abstReader = new AbstReader(new HomeReader());
+                    abstReader.getBook();
+                    model.newBookToForm(nickname, bookId + 1);
+                }
+            } catch (SQLException e1) {
+                e1.printStackTrace();
             }
-        } catch (SQLException e1) {
-            e1.printStackTrace();
+        } else if (getBook.equals("Читати в залі")) {
+            AbstReader abstReader = new AbstReader(new LibReader());
+            abstReader.getBook();
         }
+
+
     }
 
     public void BackToForm(ActionEvent e) throws SQLException, IOException {

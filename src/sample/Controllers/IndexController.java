@@ -58,7 +58,9 @@ public class IndexController implements Initializable {
 
     public void Login (ActionEvent e) {
         try {
+
             // PATTERN PROXY
+
             ProxyLib proxy = new ProxyLib();
             Form f = model.getByNick(nickname.getText());
             proxy.GoToForm(model.isLogin(nickname.getText()), e, f);
