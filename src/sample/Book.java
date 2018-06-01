@@ -29,6 +29,7 @@ public class Book  extends BookPrototype{
         this.publishing = publishing;
         this.availability = availability;
         this.id = id;
+        this.SetISBN();
     }
 
     public void setBook(String author, String title, String ISBN, String country, String language, int pages, String publishing, String availability, int id) {
@@ -41,10 +42,11 @@ public class Book  extends BookPrototype{
         this.publishing = publishing;
         this.availability = availability;
         this.id = id;
+        this.SetISBN();
     }
 
     @Override
-    public String SetISBN(){
+    public void SetISBN(){
 
         // PATTERN STRATEGY
 
@@ -52,12 +54,35 @@ public class Book  extends BookPrototype{
         context.SetStrategy(new newStandart());
         String isbn = context.getISBN();
 
-        isbn = isbn.replace("K", ""); // command
+        // PATTERN COMMAND
+
+        GeneratorK generator = new GeneratorK();
+        Task gen = new Task();
+        switch (this.country) {
+            case "England":
+            case "America": {
+                EnglishSpeaking k = new EnglishSpeaking();
+                generator.SetExecutor(gen, k);
+                break;
+            }
+            case "Ukraine": {
+                Ukraine k = new Ukraine();
+                generator.SetExecutor(gen, k);
+                break;
+            }
+            default: {
+                Default k = new Default();
+                generator.SetExecutor(gen, k);
+                break;
+            }
+        }
+        isbn = isbn.replace("K", generator.GenerateK(gen));
+
         Random random = new Random();
         isbn = isbn.replace("V", Integer.toString((1 + random.nextInt(999))));
         isbn = isbn.replace("N", Integer.toString((1 + random.nextInt(99999))));
         isbn = isbn.replace("C", GetCtrlCode(isbn));
-        return isbn;
+        this.ISBN = isbn;
     }
 
     private String GetCtrlCode(String isbn){

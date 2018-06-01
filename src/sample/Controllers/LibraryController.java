@@ -96,22 +96,22 @@ public class LibraryController implements Initializable {
 
         // PATTERN BRIDGE
 
-        if (getBook.equals("Занести в формуляр")) {
-            try {
-                if (model.howManyBooks(nickname) < 5) {
-                    AbstReader abstReader = new AbstReader(new HomeReader());
-                    abstReader.getBook();
-                    model.newBookToForm(nickname, bookId + 1);
+        if (getBook != null) {
+            if (getBook.equals("Занести в формуляр")) {
+                try {
+                    if (model.howManyBooks(nickname) < 5) {
+                        AbstReader abstReader = new AbstReader(new HomeReader());
+                        abstReader.getBook();
+                        model.newBookToForm(nickname, bookId + 1);
+                    }
+                } catch (SQLException e1) {
+                    e1.printStackTrace();
                 }
-            } catch (SQLException e1) {
-                e1.printStackTrace();
+            } else if (getBook.equals("Читати в залі")) {
+                AbstReader abstReader = new AbstReader(new LibReader());
+                abstReader.getBook();
             }
-        } else if (getBook.equals("Читати в залі")) {
-            AbstReader abstReader = new AbstReader(new LibReader());
-            abstReader.getBook();
         }
-
-
     }
 
     public void BackToForm(ActionEvent e) throws SQLException, IOException {

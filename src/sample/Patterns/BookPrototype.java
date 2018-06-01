@@ -4,7 +4,7 @@ import sample.Book;
 
 public abstract class BookPrototype implements Cloneable {
 
-    abstract public String SetISBN();
+    abstract public void SetISBN();
 
     public Object clone() {
         Object clone = null;
