@@ -25,7 +25,7 @@ import java.util.ResourceBundle;
 
 public class FormController implements Initializable {
     @FXML
-    private Label nickL, nameL, bornL, addressL, phoneL, authorL, titleL, isbnL;
+    private Label nickL, nameL, bornL, addressL, phoneL, authorL, titleL, isbnL, formLabel;
     @FXML
     private ListView <String> listView;
     @FXML
@@ -47,7 +47,10 @@ public class FormController implements Initializable {
 
     private ObservableList<String> itemList;
 
-    public void initialize(URL location, ResourceBundle resources) {}
+    public void initialize(URL location, ResourceBundle resources) {
+        FormText formText = new SimpleFormText();
+        formText.set(formLabel);
+    }
 
     public void setForm(Form form) {
         nameL.setText(form.name);
@@ -118,6 +121,14 @@ public class FormController implements Initializable {
         assert root != null;
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
+    }
+
+    public void SetBold (ActionEvent e) {
+
+        // PATTERN DECORATOR
+
+        FormText formText = new BorderDecorator(new SimpleFormText());
+        formText.set(formLabel);
     }
 
     private int indexOfBook(String s) throws SQLException {
