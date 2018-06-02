@@ -1,6 +1,9 @@
 package sample;
 
 import sample.Patterns.BookPrototype;
+import sample.Patterns.Command.*;
+import sample.Patterns.Strategy.Context;
+import sample.Patterns.Strategy.newStandart;
 
 import java.util.Random;
 import java.util.regex.Matcher;

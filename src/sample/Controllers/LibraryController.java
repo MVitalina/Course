@@ -17,6 +17,9 @@ import sample.Book;
 import sample.DBModel;
 import sample.Form;
 import sample.Patterns.*;
+import sample.Patterns.Bridge.AbstReader;
+import sample.Patterns.Bridge.HomeReader;
+import sample.Patterns.Bridge.LibReader;
 
 import java.io.IOException;
 import java.net.URL;
@@ -48,7 +51,7 @@ public class LibraryController implements Initializable {
 
     private int bookId;
 
-    public void setBookId(int bookId) {
+    private void setBookId(int bookId) {
         this.bookId = bookId;
     }
 
